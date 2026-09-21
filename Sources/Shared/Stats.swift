@@ -68,6 +68,7 @@ public final class StatsRecorder {
             uniqueKeysWithValues: snapshot.topBlocked
                 .sorted { $0.value > $1.value }
                 .prefix(maxTopEntries)
+                .map { ($0.key, $0.value) }
         )
     }
 
