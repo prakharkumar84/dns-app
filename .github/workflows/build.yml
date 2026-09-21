@@ -1,0 +1,81 @@
+name: Build iOS App
+
+on:
+  workflow_dispatch:
+    inputs:
+      bundle_id:
+        description: "App bundle identifier (must be unique to you)"
+        required: true
+        default: "com.yourname.mydns"
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_15.4.app
+
+      - name: Generate Xcode project
+        run: |
+          python3 scripts/generate_xcodeproj.py \
+            --bundle-id "${{ github.event.inputs.bundle_id || 'com.yourname.mydns' }}"
+
+      - name: Validate project structure
+        run: python3 scripts/validate_project.py
+
+      - name: Run DNS logic tests
+        run: python3 scripts/test_dns_logic.py
+
+      # Builds WITHOUT code signing. The resulting .ipa is unsigned — you sign it
+      # afterwards with Sideloadly / AltStore using your own Apple ID.
+      - name: Build unsigned archive
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project MyDNS.xcodeproj \
+            -scheme MyDNS \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            ONLY_ACTIVE_ARCH=NO \
+            clean build | xcpretty || \
+          xcodebuild \
+            -project MyDNS.xcodeproj \
+            -scheme MyDNS \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            ONLY_ACTIVE_ARCH=NO \
+            clean build
+
+      - name: Package unsigned IPA
+        run: |
+          APP_PATH="build/Build/Products/Release-iphoneos/MyDNS.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "Build product not found at $APP_PATH"
+            find build -name "*.app" -maxdepth 6
+            exit 1
+          fi
+          mkdir -p Payload
+          cp -R "$APP_PATH" Payload/
+          zip -qr MyDNS-unsigned.ipa Payload
+          ls -lh MyDNS-unsigned.ipa
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: MyDNS-unsigned-ipa
+          path: MyDNS-unsigned.ipa
+          retention-days: 30

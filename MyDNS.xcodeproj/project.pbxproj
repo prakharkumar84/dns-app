@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		7AD94DE0E9E99E50520B3B47 /* MyDNSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyDNSApp.swift"; path = "Sources/App/MyDNSApp.swift"; sourceTree = "<group>"; };
+		F5D0D9A181306232979F319B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RootView.swift"; path = "Sources/App/RootView.swift"; sourceTree = "<group>"; };
+		68469738153CFB94DBAE2FC2 /* TunnelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TunnelController.swift"; path = "Sources/App/TunnelController.swift"; sourceTree = "<group>"; };
+		45D8F4EDB5C7570B57E75806 /* IPPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IPPacket.swift"; path = "Sources/Tunnel/IPPacket.swift"; sourceTree = "<group>"; };
+		A8A35C13CACF1BB0DB506CB2 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PacketTunnelProvider.swift"; path = "Sources/Tunnel/PacketTunnelProvider.swift"; sourceTree = "<group>"; };
+		51E3F275F9C39E0B083BF73F /* UpstreamResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UpstreamResolver.swift"; path = "Sources/Tunnel/UpstreamResolver.swift"; sourceTree = "<group>"; };
+		5145DC458672444B85F54F5E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppConfig.swift"; path = "Sources/Shared/AppConfig.swift"; sourceTree = "<group>"; };
+		2C3AA2E1878049A03905291B /* BlocklistEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BlocklistEngine.swift"; path = "Sources/Shared/BlocklistEngine.swift"; sourceTree = "<group>"; };
+		5E643DEC10E1E453FB4FBA16 /* BlocklistStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BlocklistStore.swift"; path = "Sources/Shared/BlocklistStore.swift"; sourceTree = "<group>"; };
+		EB4B991C002536A071BAB924 /* DNSMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DNSMessage.swift"; path = "Sources/Shared/DNSMessage.swift"; sourceTree = "<group>"; };
+		9DE4093578C2AA26F212DC11 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Stats.swift"; path = "Sources/Shared/Stats.swift"; sourceTree = "<group>"; };
+		BBEE8FACBBB5AB71B4313145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "MyDNS/Assets.xcassets"; sourceTree = "<group>"; };
+		389318393A718CE585A25142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info.plist"; path = "MyDNS/Info.plist"; sourceTree = "<group>"; };
+		FCC88BF6C616A8FBF552F7FC /* MyDNS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MyDNS.entitlements"; path = "MyDNS/MyDNS.entitlements"; sourceTree = "<group>"; };
+		108EC3D3A5F8C3222F7C99E0 /* Tunnel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tunnel-Info.plist"; path = "MyDNSTunnel/Info.plist"; sourceTree = "<group>"; };
+		B9DBADF79482200831DBA3A7 /* MyDNSTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MyDNSTunnel.entitlements"; path = "MyDNSTunnel/MyDNSTunnel.entitlements"; sourceTree = "<group>"; };
+		F2C5727BCD2349683E3C2AE0 /* MyDNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyDNS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5155D78A0D8F7EA1AEC2C4B8 /* MyDNSTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MyDNSTunnel.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E33113406EB7A482E065E6D /* MyDNSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD94DE0E9E99E50520B3B47; };
+		4B8C7ADCB2C00A2096511B05 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D0D9A181306232979F319B; };
+		739A9FA2E602007970EA89FB /* TunnelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68469738153CFB94DBAE2FC2; };
+		CA798CEEBD95A5737AAC1A24 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5145DC458672444B85F54F5E; };
+		A3A11BC9411950225BBF9E60 /* BlocklistEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AA2E1878049A03905291B; };
+		250F00483B4C8D0F05532492 /* BlocklistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E643DEC10E1E453FB4FBA16; };
+		4FE8EBCBE6C11124D6703015 /* DNSMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B991C002536A071BAB924; };
+		58756444B8CCC5D678071E9E /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE4093578C2AA26F212DC11; };
+		BDCA8C1E538254D6D08539BA /* IPPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D8F4EDB5C7570B57E75806; };
+		E85FDC52E88CC7EF14CBEBC4 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A35C13CACF1BB0DB506CB2; };
+		286C22F501571DB014BA3D4A /* UpstreamResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E3F275F9C39E0B083BF73F; };
+		8A454B7C1C115448458AA436 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5145DC458672444B85F54F5E; };
+		70B722C95A9BD671BE2467FB /* BlocklistEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AA2E1878049A03905291B; };
+		F203DBCF89C516BDCB54EB18 /* BlocklistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E643DEC10E1E453FB4FBA16; };
+		FEBE69C79C1A3B0A944CFDD2 /* DNSMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B991C002536A071BAB924; };
+		54CB328B489C47EFEEE0FD3A /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE4093578C2AA26F212DC11; };
+		7D40D18515749BC16D80FC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEE8FACBBB5AB71B4313145; };
+		07E7F09DBF2FF9E69BFE97F3 /* MyDNSTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5155D78A0D8F7EA1AEC2C4B8; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4FAEFDFDFA8FF217B5345665 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7AD94DE0E9E99E50520B3B47,
+				F5D0D9A181306232979F319B,
+				68469738153CFB94DBAE2FC2,
+			);
+			name = "App";
+			sourceTree = "<group>";
+		};
+		A6C0DA7C2CD1A893F96D3ACA /* Tunnel */ = {
+			isa = PBXGroup;
+			children = (
+				45D8F4EDB5C7570B57E75806,
+				A8A35C13CACF1BB0DB506CB2,
+				51E3F275F9C39E0B083BF73F,
+			);
+			name = "Tunnel";
+			sourceTree = "<group>";
+		};
+		33A87541CD26813751AF1ECA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5145DC458672444B85F54F5E,
+				2C3AA2E1878049A03905291B,
+				5E643DEC10E1E453FB4FBA16,
+				EB4B991C002536A071BAB924,
+				9DE4093578C2AA26F212DC11,
+			);
+			name = "Shared";
+			sourceTree = "<group>";
+		};
+		F09C98AE4A5891F8F3857F2F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4FAEFDFDFA8FF217B5345665,
+				A6C0DA7C2CD1A893F96D3ACA,
+				33A87541CD26813751AF1ECA,
+			);
+			name = "Sources";
+			sourceTree = "<group>";
+		};
+		D99DBB270E1A1F4D22E51327 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBEE8FACBBB5AB71B4313145,
+				389318393A718CE585A25142,
+				FCC88BF6C616A8FBF552F7FC,
+				108EC3D3A5F8C3222F7C99E0,
+				B9DBADF79482200831DBA3A7,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E23DBF818BAFA7355AF34895 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2C5727BCD2349683E3C2AE0,
+				5155D78A0D8F7EA1AEC2C4B8,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		8B5C66197BB77251E5084399 /* MyDNS */ = {
+			isa = PBXGroup;
+			children = (
+				F09C98AE4A5891F8F3857F2F,
+				D99DBB270E1A1F4D22E51327,
+				E23DBF818BAFA7355AF34895,
+			);
+			name = "MyDNS";
+			sourceTree = "<group>";
+		};
+		78E8C2DE2243A2A519A61361 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E33113406EB7A482E065E6D,
+				4B8C7ADCB2C00A2096511B05,
+				739A9FA2E602007970EA89FB,
+				CA798CEEBD95A5737AAC1A24,
+				A3A11BC9411950225BBF9E60,
+				250F00483B4C8D0F05532492,
+				4FE8EBCBE6C11124D6703015,
+				58756444B8CCC5D678071E9E,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43D1CC90AE482FFE6BE0A34F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDCA8C1E538254D6D08539BA,
+				E85FDC52E88CC7EF14CBEBC4,
+				286C22F501571DB014BA3D4A,
+				8A454B7C1C115448458AA436,
+				70B722C95A9BD671BE2467FB,
+				F203DBCF89C516BDCB54EB18,
+				FEBE69C79C1A3B0A944CFDD2,
+				54CB328B489C47EFEEE0FD3A,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91E6953A948F50B877B5CC59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D40D18515749BC16D80FC81,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23D2D6698BF980AA606F185C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		081A66F8634E2F334823DF86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		734AB9F3011C51123A897E16 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				07E7F09DBF2FF9E69BFE97F3,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AC9BFD72D6247E570DBDED = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C24E091E561DCABCEAC7BE3B;
+			proxyType = 1;
+			remoteGlobalIDString = 912D467FE632D5B305D85C52;
+			remoteInfo = "MyDNSTunnel";
+		};
+		4BDC625572AA77C02E15A734 = {
+			isa = PBXTargetDependency;
+			target = 912D467FE632D5B305D85C52;
+			targetProxy = 85AC9BFD72D6247E570DBDED;
+		};
+		D4C8F470DCF3900AB6E725FC /* MyDNS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7399F5310349B3F85F2A78E;
+			buildPhases = (
+				78E8C2DE2243A2A519A61361,
+				23D2D6698BF980AA606F185C,
+				91E6953A948F50B877B5CC59,
+				734AB9F3011C51123A897E16,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4BDC625572AA77C02E15A734,
+			);
+			name = "MyDNS";
+			productName = "MyDNS";
+			productReference = F2C5727BCD2349683E3C2AE0;
+			productType = "com.apple.product-type.application";
+		};
+		912D467FE632D5B305D85C52 /* MyDNSTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0F730523E3CC4F6084AF754;
+			buildPhases = (
+				43D1CC90AE482FFE6BE0A34F,
+				081A66F8634E2F334823DF86,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MyDNSTunnel";
+			productName = "MyDNSTunnel";
+			productReference = 5155D78A0D8F7EA1AEC2C4B8;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C24E091E561DCABCEAC7BE3B = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					D4C8F470DCF3900AB6E725FC = {CreatedOnToolsVersion = 15.2; };
+					912D467FE632D5B305D85C52 = {CreatedOnToolsVersion = 15.2; };
+				};
+			};
+			buildConfigurationList = 55696D2020E12A9CFDE35529;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B5C66197BB77251E5084399;
+			productRefGroup = E23DBF818BAFA7355AF34895;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4C8F470DCF3900AB6E725FC,
+				912D467FE632D5B305D85C52,
+			);
+		};
+		A6BB3D36C9E02E824ED9F53B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		A45EAE6BAB1401C5F8C4C311 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		710173DADDF5A652CD2905AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MyDNS/MyDNS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "MyDNS/Info.plist";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mydns.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9F6424DFDB23C34C2D90E81A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MyDNS/MyDNS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "MyDNS/Info.plist";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mydns.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CB7147A988CB38BE0DE7DA59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MyDNSTunnel/MyDNSTunnel.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "MyDNSTunnel/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				SKIP_INSTALL = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mydns.app.tunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		572B4331122CA27578E351C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MyDNSTunnel/MyDNSTunnel.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "MyDNSTunnel/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				SKIP_INSTALL = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mydns.app.tunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		55696D2020E12A9CFDE35529 /* Build configuration list for PBXProject */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6BB3D36C9E02E824ED9F53B,
+				A45EAE6BAB1401C5F8C4C311,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7399F5310349B3F85F2A78E /* Build configuration list for PBXNativeTarget app */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				710173DADDF5A652CD2905AA,
+				9F6424DFDB23C34C2D90E81A,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0F730523E3CC4F6084AF754 /* Build configuration list for PBXNativeTarget tunnel */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB7147A988CB38BE0DE7DA59,
+				572B4331122CA27578E351C3,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+	};
+	rootObject = C24E091E561DCABCEAC7BE3B;
+}
