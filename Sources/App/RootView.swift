@@ -187,11 +187,20 @@ struct LogView: View {
         NavigationStack {
             List {
                 if entries.isEmpty {
-                    ContentUnavailableView(
-                        "No activity yet",
-                        systemImage: "list.bullet.rectangle",
-                        description: Text("Turn on protection and browse — queries appear here.")
-                    )
+                    VStack(spacing: 8) {
+                        Image(systemName: "list.bullet.rectangle")
+                            .font(.largeTitle)
+                            .foregroundStyle(.secondary)
+                        Text("No activity yet")
+                            .font(.headline)
+                        Text("Turn on protection and browse — queries appear here.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                    .listRowSeparator(.hidden)
                 } else {
                     ForEach(entries) { entry in
                         HStack(spacing: 12) {
@@ -319,12 +328,12 @@ struct FiltersView: View {
                     }
                 } footer: {
                     if let message = model.refreshMessage {
-                        Text(message).foregroundStyle(model.isRefreshing ? .secondary : .red)
+                        Text(message).foregroundColor(model.isRefreshing ? .secondary : .red)
                     }
                 }
             }
             .navigationTitle("Filters")
-            .onChange(of: model.sources) { _, new in
+            .onChange(of: model.sources) { new in
                 BlocklistStore.shared.sources = new
             }
         }
