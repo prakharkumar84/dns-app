@@ -16,10 +16,20 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_15.4.app
+        run: |
+          # Pick the pinned Xcode if present, otherwise fall back to the newest
+          # installed version so the job doesn't break when the runner image rotates.
+          if [ -d /Applications/Xcode_15.4.app ]; then
+            sudo xcode-select -switch /Applications/Xcode_15.4.app
+          else
+            LATEST=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -n 1)
+            echo "Xcode_15.4 not found, using $LATEST"
+            sudo xcode-select -switch "$LATEST"
+          fi
+          xcodebuild -version
 
       - name: Generate Xcode project
         run: |
@@ -37,6 +47,8 @@ jobs:
       - name: Build unsigned archive
         run: |
           set -o pipefail
+          # Tee the full log so the real compiler diagnostics survive even when
+          # xcpretty summarizes them. On failure we print the raw errors.
           xcodebuild \
             -project MyDNS.xcodeproj \
             -scheme MyDNS \
@@ -47,18 +59,14 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             ONLY_ACTIVE_ARCH=NO \
-            clean build | xcpretty || \
-          xcodebuild \
-            -project MyDNS.xcodeproj \
-            -scheme MyDNS \
-            -configuration Release \
-            -sdk iphoneos \
-            -derivedDataPath build \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO \
-            ONLY_ACTIVE_ARCH=NO \
-            clean build
+            clean build 2>&1 | tee xcodebuild.log | xcpretty
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            echo "::group::Full xcodebuild error output"
+            grep -E "error:|warning:|note:|BUILD FAILED" xcodebuild.log || tail -n 200 xcodebuild.log
+            echo "::endgroup::"
+            exit "$status"
+          fi
 
       - name: Package unsigned IPA
         run: |
